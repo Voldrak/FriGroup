@@ -1,0 +1,147 @@
+// HOME //
+
+.bodyHome{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 50vw;
+    gap: 7vw;
+    margin: 8.5vh auto;
+
+    .select_Home{
+        margin: auto;
+        width: 400px;
+        height: 500px;
+        line-height: 500px;
+        font-size: 32px;
+        transition: all 0.55s;
+
+    }
+    a, a:hover, a:focus, a:active {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    #createGroup{
+        background-image: linear-gradient(to bottom right,#23d5ab,#23a6d5, #e73c7e, #ee7752);
+        
+        &:hover{
+            transform: scale(1.2);
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 5s ease infinite;
+            color: white;
+        }
+    }
+
+
+    #findGroup{
+        background: yellow;
+        background-image: linear-gradient(to bottom right,#30e91f,#cee40f, #ee8e34, #b32020);
+        &:hover{
+            transform: scale(1.2);
+            background: linear-gradient(-45deg, #b32020,#ee8e34, #cee40f, #30e91f);
+            background-size: 400% 400%;
+            animation: gradient 5s ease infinite;
+            color: white;
+        }
+    }
+
+    #calendary{
+        background: rgb(210, 246, 208);
+        transition: 1s;
+        &:hover{
+            transform: scale(1.2);
+            background-image: url("../img/Calendarview-423x281.png");
+            background-position: center;
+            background-size: cover;
+            
+        }
+        &:hover > h2{
+            transition: 0.8s;
+            transform: translateX(-170px);
+            opacity: 0;
+            cursor: default;
+        }
+        
+    }
+
+    #istructions{
+        background: rgba(0, 0, 0, 0.013);
+
+        &:hover{        
+        background-image: url("../img/istruction.jpg");
+        background-size: cover;
+        background-position:center;
+        background-repeat: no-repeat;
+        transition: 0.8s;
+    }
+
+        &:hover > h2{
+            transition: 0.8s;
+            transform: translateY(-210px);
+        }
+    }
+}
+
+// Create Group //
+
+.CreateGroup_Form{
+    margin: 5vh auto;
+    width: 60vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: rgba(217, 233, 233, 0.65);
+    text-align: left;
+    border-radius: 10px;
+    font-size: 24px;
+
+    
+
+    .section_label,
+    .section_legend{
+        margin: 3vh 3vw;
+    }
+
+    #Interests,
+    #Meeting_Place{
+        display: flex;
+        margin: 0 3vw ;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.5vw;
+
+        label{
+            text-align: center;
+        }
+    }
+
+
+    .button{
+        display: flex;
+        justify-content: center;
+        gap: 15vw;
+        margin: 3vh 0;
+        input{
+            border-radius: 10px;
+            width: 8vw;
+            min-width: 60px;
+            height: 3vh;
+            min-height: 30px;
+        }
+    }
+}

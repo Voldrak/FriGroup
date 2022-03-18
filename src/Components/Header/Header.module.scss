@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+}
+
+.Head{
+    display: flex;
+    background: gray;
+    width: 100vw;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    justify-content: center;
+
+.Logo{
+    a, a:hover, a:focus, a:active {
+        text-decoration: none;
+        color: inherit;
+  }
+}
+    
+    .Login_settings{
+        position: absolute;
+        right: 1vw;
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100px;
+    }
+    
+    .Login{
+    background: transparent;
+    height: 40px;
+}
+
+.Settings{
+    background: transparent;
+    height: 40px;
+    
+}
+}
