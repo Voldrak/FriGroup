@@ -14,7 +14,7 @@ return(
                     <input type="text" name="nameGroup" placeholder="My Group Name" required/>
                 </label>
                 <label for="description" className={style.section_label}>Description (optional):
-                    <input type="text" name="description" placeholder="Description of the group" />
+                    <input id={style.descriptionText} type="text" name="description" placeholder="Description of the group" />
                 </label>
                     <legend className={style.section_legend}>Common interests (select at least one):</legend>
                 <selection id={style.Interests}>
@@ -87,6 +87,9 @@ return(
                     <input type="time" name="Time" required/>
                 </label>
                 </div>
+                <label for="Age" className={style.section_label}> Average age of the group*:
+                    <input id={style.AgeNum} type="number" name="Age" defaultValue="18" required/>
+                </label>
                 <label for="range" className={style.section_label}> Range search:
                     <input type="range" min="1" max="150" defaultValue="50" step="1" onChange={handleValueRange} /> {stateValueRange} km
                 </label>

@@ -1,6 +1,6 @@
 import Layout from "../Layout";
 import style from "./Pages.module.scss";
-import styles from "./../Libs/Check.module.scss";
+// import styles from "./../Libs/Check.module.scss";
 
 const FindGroup = () =>{
     return(

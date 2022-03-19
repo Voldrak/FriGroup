@@ -157,9 +157,14 @@
         min-width: 150px;
       }
     
+      #AgeNum{
+          width: 40px;
+      }
+
       input[type="text"],
       input[type="date"],
-      input[type="time"]{
+      input[type="time"],
+      input[type="number"]{
         margin-left: 1vw;
         height: 30px;
         border-radius:10px;
