@@ -97,7 +97,7 @@
     }
 }
 
-// Create Group //
+// CREATE GROUP //
 
 .CreateGroup_Form{
     margin: 5vh auto;
@@ -130,6 +130,9 @@
         }
     }
 
+    .DateLab{
+        margin-right: 4vw;
+    }
 
     .button{
         display: flex;
@@ -143,5 +146,63 @@
             height: 3vh;
             min-height: 30px;
         }
+    }
+    input[type="text"]{
+        width: 10vw;
+        min-width: 150px;
+      }
+    
+      #descriptionText{
+        width: 30vw;
+        min-width: 150px;
+      }
+    
+      input[type="text"],
+      input[type="date"],
+      input[type="time"]{
+        margin-left: 1vw;
+        height: 30px;
+        border-radius:10px;
+        font-size: 20px;
+    
+        &:focus{
+          outline: 4px rgba(1, 183, 255, 0.431) solid;
+        }
+      }
+    
+      input[type="date"],
+      input[type="time"]{
+        margin-top: 3vh;
+      }
+}
+
+// FIND GROUP //
+
+.FindGroup_wrapper{
+    margin: 3vh auto;
+    width: 50vw;
+    height: 85vh;
+    background: rgba(5, 5, 5, 0.65);
+    border-radius: 10px;
+    display: flex;
+
+    .UpBar{
+        position: relative;
+        height: 100px;
+        width: 65%;
+        background: rgba(0, 0, 0, 0.555);
+
+        .TitleUpBar{
+            color: rgb(255, 255, 255);
+            font-size: 36px;
+            line-height: 100px;
+        }
+    }
+
+    .SearchOption{
+        position: relative;
+        height: 100%;
+        width: 35%;
+        background: rgba(0, 0, 0, 0.555);
     }
 }

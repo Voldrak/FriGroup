@@ -14,7 +14,7 @@ return(
                     <input type="text" name="nameGroup" placeholder="My Group Name" required/>
                 </label>
                 <label for="description" className={style.section_label}>Description (optional):
-                    <input id={styles.descriptionText} type="text" name="description" placeholder="Description of the group" />
+                    <input type="text" name="description" placeholder="Description of the group" />
                 </label>
                     <legend className={style.section_legend}>Common interests (select at least one):</legend>
                 <selection id={style.Interests}>
@@ -80,7 +80,7 @@ return(
                     
                 </selection>
                 <div className={style.section_label}>
-                <label for="Date">Date*:
+                <label for="Date" className={style.DateLab}>Date*:
                     <input type="date" name="Date" required/>
                 </label>
                 <label for="Time">Time*:

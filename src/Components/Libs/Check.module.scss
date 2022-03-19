@@ -1,32 +1,5 @@
 @supports(-webkit-appearance: none) or (-moz-appearance: none) {
-  input[type="text"]{
-    width: 10vw;
-    min-width: 150px;
-  }
-
-  #descriptionText{
-    width: 30vw;
-    min-width: 150px;
-  }
-
-  input[type="text"],
-  input[type="date"],
-  input[type="time"]{
-    margin-left: 1vw;
-    height: 30px;
-    border-radius:10px;
-    font-size: 20px;
-
-    &:focus{
-      outline: 4px rgba(1, 183, 255, 0.431) solid;
-    }
-  }
-
-  input[type="date"],
-  input[type="time"]{
-    margin-top: 3vh;
-  }
-
+  
   input[type='checkbox'],
   input[type='radio'] {
     --active: #275EFE;
