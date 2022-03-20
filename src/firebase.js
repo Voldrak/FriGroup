@@ -20,4 +20,4 @@ initializeApp(firebaseConfig);
 // Database ref
 const db = getFirestore();
 
-export {db}
+export {db};
