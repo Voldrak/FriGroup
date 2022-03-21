@@ -208,6 +208,72 @@
         }
     }
 
+    .wrapper_ListGroup{
+        width: 65%;
+
+        .ListUl{
+            display: flex;
+            flex-direction: column;
+            margin: 1vh;
+            gap: 2vh;
+            padding: 0;
+
+        .ListGroup{
+            // position: relative;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            // gap: 1vw;
+            height: 5vh;
+            padding: 0 15px;
+            line-height: 2.5vh;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.294);
+            transition: all 0.35s;
+
+            &:hover{
+                background-color: rgba(0, 0, 0, 0.561);
+            }
+
+        .List_NameDesc{
+            // position: relative;
+            display: flex;
+            width: 40%;
+            text-align: justify;
+            gap: 1vw;
+            align-items: center;
+
+
+            .titleGroup{
+                // display: block;
+                width: 40%;
+            }
+
+            .description{
+                display: block;
+                width: 60%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .List_InteMeet{
+            width: 30%;
+
+            .interest{
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+        
+    }
+}
+}
+
     .SearchOption{
         position: relative;
         height: 100%;

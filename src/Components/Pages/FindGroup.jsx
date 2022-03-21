@@ -1,3 +1,5 @@
+import checkboxs from "./../Libs/Checkbox.json";
+import radios from "./../Libs/Radio.json";
 import Layout from "../Layout";
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
@@ -6,7 +8,12 @@ import style from "./Pages.module.scss";
 
 const FindGroup = () =>{
 
+    const [stateValueRange, setStateValueRange] = useState("50");
     const [groups, setGroups] = useState([]);
+    const [interestsCom] = useState(checkboxs);
+    const [meetingPlace] = useState(radios);
+    
+    const handleValueRange = event => setStateValueRange(event.target.value);
 
 
     useEffect( () => {
@@ -33,88 +40,62 @@ const FindGroup = () =>{
                <div className={style.UpBar}>
                     <h2 className={style.TitleUpBar}>Find Group</h2>
                </div>
-               <div>
-               <ul>
-       {groups.map((group, index) => (
-         <li key={index}>
-         <h4>{group.Group_Name}</h4>
-         <p>{group.Description}</p>
 
-         </li>
-       ))} 
-      </ul>
-               </div>
+                <div className={style.wrapper_ListGroup}>
+                    <ul className={style.ListUl}>
+                        {groups.map((group, index) => (
+                            <li className={style.ListGroup} key={index}>
+                            <div className={style.List_NameDesc}>
+                                <h4 className={style.titleGroup}>{group.Group_Name}</h4>
+                                <p className={style.description}>{group.Description}</p>
+                            </div>
+                            <div className={style.List_InteMeet}>
+                                <p className={style.interest}>{group.Common_Interests.interests}</p>
+                                <p>{group.Meeting_place}</p>
+                            </div>
+                            <div>
+                                <p>About {group.Age} years old</p>
+                                <p>{group.Range}Km</p>
+                            </div>
+                            <div>
+                                <p>{group.Date}</p>
+                                <p>{group.Time}</p>
+                            </div>
+                        </li>
+                    ))} 
+                    </ul>
+                </div>
+
                <div className={style.SearchOption}>
                     <h3 className={style.Title_AdSearch}>Advanced Search</h3>
                     <div className={style.wrapperSearch}>
-                        <label for="nameGroup">Group Name:
+                        <label htmlFor="nameGroup">Group Name:
                             <input type="text" name="nameGroup" placeholder="Search Group"/>
                         </label>
                         <legend>Common interests:</legend>
-                        <selection id={style.Interests}>
+                        <section id={style.Interests}>
+                        {interestsCom.map((boxs) => (
 
-                    <label for="checkbox"><p>Anime</p>
-                        <input type="checkbox" name="checkbox" value="Anime"/>
-                    </label>
+                            <label htmlFor="checkbox">{boxs.name}
+                                <input type="checkbox" name="checkbox" value={boxs.value}/>
+                            </label>
 
-                    <label for="checkbox"><p>Manga</p>
-                        <input type="checkbox" name="checkbox" value="Manga"/>
-                    </label>
-
-                    <label for="checkbox"><p>Gaming</p>
-                        <input type="checkbox" name="checkbox" value="Gaming"/>
-                    </label>
-
-                    <label for="checkbox"><p>Moto</p>
-                        <input type="checkbox" name="checkbox" value="Moto"/>
-                    </label>
-
-                    <label for="checkbox"><p>Auto</p>
-                        <input type="checkbox" name="checkbox" value="Auto"/>
-                    </label>
-
-                    <label for="checkbox"><p>Film/Telefilm</p>
-                        <input type="checkbox" name="checkbox" value="Film/Telefilm"/>
-                    </label>
-
-                    <label for="checkbox"><p>Libri</p>
-                        <input type="checkbox" name="checkbox" value="Libri"/>
-                    </label>
-
-                    <label for="checkbox"><p>Drink</p>
-                        <input type="checkbox" name="checkbox" value="Drinks"/>
-                    </label>
-
-                    <label for="checkbox"><p>Food</p>
-                        <input type="checkbox" name="checkbox" value="Food"/>
-                    </label>
-
-                    <label for="checkbox"><p>Dance</p>
-                        <input type="checkbox" name="checkbox" value="Dance"/>
-                    </label>
-
-                        </selection>
+                        ))}
+                        </section>
                         <legend className={style.section_legend}>Meeting place:</legend>
-                        <selection id={style.Meeting_Place}>
-                            <label for="radio"><p>Bar</p>
-                                <input type="radio" name="radio" value="Bar" />
-                            </label>
-                            <label for="radio"><p>Pub</p>
-                                <input type="radio" name="radio" value="Pub"/>
-                            </label>
-                            <label for="radio"><p>Resturant</p>
-                                <input type="radio" name="radio" value="Resturant"/>
-                            </label>
-                            <label for="radio"><p>Discotheque</p>
-                                <input type="radio" name="radio" value="Discotheque"/>
-                            </label>
-                            <label for="radio"><p>Game room</p>
-                                <input type="radio" name="radio" value="Game_room"/>
-                            </label>
-                            
-                        </selection>
-                        <label for="Age"> Your age:
-                            <input id={style.AgeNum} type="number" name="Age"/>
+                        <section id={style.Meeting_Place} >
+                    {meetingPlace.map((radios) =>(
+                    <label htmlFor="radio">{radios.name} 
+                        <input type="radio" name="radio" value={radios.value} defaultChecked/>
+                    </label>
+                    ))}
+                </section>
+                        <label htmlFor="Age"> Your age:
+                            <input id={style.AgeNum} type="number" name="Age" placeholder="18"/>
+                        </label>
+
+                        <label htmlFor="range" className={style.section_label}> Range search:
+                            <input type="range" min="1" max="150" defaultValue="50" step="1" onChange={handleValueRange} /> {stateValueRange} km
                         </label>
                     </div>
                </div>

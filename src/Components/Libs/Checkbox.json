@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Anime",
+        "value": "Anime"
+    },
+    {
+        "name": "Manga",
+        "value": "Manga"
+    },
+    {
+        "name": "Gaming",
+        "value": "Gaming"
+    },
+    {
+        "name": "Moto",
+        "value": "Moto"
+    },
+    {
+        "name": "Auto",
+        "value": "Auto"
+    },
+    {
+        "name": "Film/Telefilm",
+        "value": "Film/Telefilm"
+    },
+    {
+        "name": "Libri",
+        "value": "Libri"
+    },
+    {
+        "name": "Drink",
+        "value": "Drink"
+    },
+    {
+        "name": "Food",
+        "value": "Food"
+    },
+    {
+        "name": "Dance",
+        "value": "Dance"
+    }
+]
