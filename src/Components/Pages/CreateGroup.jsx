@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import checkboxs from "./../Libs/Checkbox.json";
 import radios from "./../Libs/Radio.json";
 import Layout from "../Layout";
 import {db} from "./../../firebase.js";
-import {collection, addDoc, getDocs } from "firebase/firestore";
+import {collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import style from "./Pages.module.scss";
 import "./../Libs/Check.module.scss";
@@ -13,9 +13,11 @@ const CreateGroup = () => {
     const handleValueRange = event => setStateValueRange(event.target.value);
     const [interestsCom] = useState(checkboxs);
     const [meetingPlace] = useState(radios);
-    
+    let navigate = useNavigate();
+
     const [nameValue, setNameValue] = useState("");
     const [descriptionValue, setDescriptionValue] = useState("");
+    const [location, setLocation] = useState("");
     const [checkBox, setCheckBox] = useState({interests: []});
     const [radioBox, setRadioBox] = useState([]);
     const [date, setDate] = useState("")
@@ -41,6 +43,7 @@ const CreateGroup = () => {
         const newGroup = {
           Group_Name: nameValue,
           Description: descriptionValue,
+          Location: location,
           Common_Interests: checkBox,
           Meeting_place: radioBox,
           Date: date,
@@ -51,7 +54,10 @@ const CreateGroup = () => {
         console.log(newGroup);
         addDoc(collection(db, "groups"), newGroup);
         setNameValue("");
-      }
+        navigate('/');
+    }
+
+
 return(
     <Layout>
         <div>
@@ -63,7 +69,11 @@ return(
                     <input id={style.descriptionText} type="text" name="description" placeholder="Description of the group" value={descriptionValue} onChange={(e)=> setDescriptionValue(e.target.value)} />
                 </label>
 
-                    <legend className={style.section_legend}>Common interests (select at least one):</legend>
+                <label htmlFor="location" className={style.section_label}>Location*:
+                    <input type="text" name="location" placeholder="where?" value={descriptionValue} onChange={(e)=> setLocation(e.target.value)} required/>
+                </label>
+
+                <legend className={style.section_legend}>Common interests (select at least one):</legend>
                     <section id={style.Interests}>
                     {interestsCom.map((boxs) => (
 
@@ -72,7 +82,7 @@ return(
                         </label>
 
                     ))}
-                    </section>
+                </section>
 
                 <legend className={style.section_legend}>Meeting place (select only one)*:</legend>
                 <section id={style.Meeting_Place} >

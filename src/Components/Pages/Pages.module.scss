@@ -1,4 +1,4 @@
-// HOME //
+///////// HOME /////////
 
 .bodyHome{
     display: flex;
@@ -97,7 +97,7 @@
     }
 }
 
-// CREATE GROUP //
+///////// CREATE GROUP /////////
 
 .CreateGroup_Form{
     margin: 5vh auto;
@@ -181,7 +181,7 @@
       }
 }
 
-// FIND GROUP //
+///////// FIND GROUP /////////
 
 .FindGroup_wrapper{
     margin: 3vh auto;
@@ -218,12 +218,15 @@
             gap: 2vh;
             padding: 0;
 
+            a, a:hover, a:focus, a:active {
+                text-decoration: none;
+                color: inherit;
+            }
+
         .ListGroup{
-            // position: relative;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
-            // gap: 1vw;
             height: 5vh;
             padding: 0 15px;
             line-height: 2.5vh;
@@ -237,16 +240,13 @@
             }
 
         .List_NameDesc{
-            // position: relative;
             display: flex;
             width: 40%;
             text-align: justify;
             gap: 1vw;
             align-items: center;
 
-
             .titleGroup{
-                // display: block;
                 width: 40%;
             }
 
@@ -315,9 +315,44 @@
         margin-left: 1vw;
       }
 
+      .inputSearch{
+          width: 60%;
+      }
+
     #AgeNum{
         width: 40px;
     }
     }
 }
+}
+
+///////// GROUP DESCRIPTION /////////
+
+.wrapper_group{
+    margin: 3vh auto;
+    width: 70vw;
+    height: 85vh;
+    background: rgba(5, 5, 5, 0.65);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+
+    .Desc_Title{
+        font-size: 32px;
+        margin: 2vh 0;
+    }
+
+    .JoinGroup{
+        margin: auto;
+        height: 50px;
+        width: 30vw;
+        cursor: pointer;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.356);
+
+        &:hover{
+            background: rgba(0, 0, 0, 0.555);
+        }
+    }
 }

@@ -4,6 +4,7 @@ import Layout from "../Layout";
 import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import {db} from "./../../firebase.js";
+import { Link } from "react-router-dom";
 import style from "./Pages.module.scss";
 
 const FindGroup = () =>{
@@ -44,24 +45,26 @@ const FindGroup = () =>{
                 <div className={style.wrapper_ListGroup}>
                     <ul className={style.ListUl}>
                         {groups.map((group, index) => (
+                            <Link to={`/find_group/${group.id}`}> 
                             <li className={style.ListGroup} key={index}>
-                            <div className={style.List_NameDesc}>
-                                <h4 className={style.titleGroup}>{group.Group_Name}</h4>
-                                <p className={style.description}>{group.Description}</p>
-                            </div>
-                            <div className={style.List_InteMeet}>
-                                <p className={style.interest}>{group.Common_Interests.interests}</p>
-                                <p>{group.Meeting_place}</p>
-                            </div>
-                            <div>
-                                <p>About {group.Age} years old</p>
-                                <p>{group.Range}Km</p>
-                            </div>
-                            <div>
-                                <p>{group.Date}</p>
-                                <p>{group.Time}</p>
-                            </div>
-                        </li>
+                                <div className={style.List_NameDesc}>
+                                    <h4 className={style.titleGroup}>{group.Group_Name}</h4>
+                                    <p className={style.description}>{group.Description}</p>
+                                </div>
+                                <div className={style.List_InteMeet}>
+                                    <p className={style.interest}>{group.Common_Interests.interests}</p>
+                                    <p>{group.Meeting_place}</p>
+                                </div>
+                                <div>
+                                    <p>About {group.Age} years old</p>
+                                    <p>{group.Range}Km from {group.Location}</p>
+                                </div>
+                                <div>
+                                    <p>{group.Date}</p>
+                                    <p>{group.Time}</p>
+                                </div>
+                            </li>
+                            </Link>
                     ))} 
                     </ul>
                 </div>
@@ -70,7 +73,7 @@ const FindGroup = () =>{
                     <h3 className={style.Title_AdSearch}>Advanced Search</h3>
                     <div className={style.wrapperSearch}>
                         <label htmlFor="nameGroup">Group Name:
-                            <input type="text" name="nameGroup" placeholder="Search Group"/>
+                            <input className={style.inputSearch} type="text" name="nameGroup" placeholder="Search Group"/>
                         </label>
                         <legend>Common interests:</legend>
                         <section id={style.Interests}>
