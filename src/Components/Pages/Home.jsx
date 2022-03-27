@@ -1,6 +1,7 @@
 import Layout from './../Layout';
 import style from './Pages.module.scss';
 import { Link } from "react-router-dom";
+import Calendary from './Calendary';
 
 
 const Home = () => {

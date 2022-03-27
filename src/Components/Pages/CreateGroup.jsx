@@ -70,7 +70,7 @@ return(
                 </label>
 
                 <label htmlFor="location" className={style.section_label}>Location*:
-                    <input type="text" name="location" placeholder="where?" value={descriptionValue} onChange={(e)=> setLocation(e.target.value)} required/>
+                    <input type="text" name="location" placeholder="where?" value={location} onChange={(e)=> setLocation(e.target.value)} required/>
                 </label>
 
                 <legend className={style.section_legend}>Common interests (select at least one):</legend>

@@ -33,8 +33,6 @@ const FindGroup = () =>{
             getData()
         },[]);
 
-
-
     return(
         <Layout>
             <div className={style.FindGroup_wrapper}>
@@ -52,7 +50,7 @@ const FindGroup = () =>{
                                     <p className={style.description}>{group.Description}</p>
                                 </div>
                                 <div className={style.List_InteMeet}>
-                                    <p className={style.interest}>{group.Common_Interests.interests}</p>
+                                    <p className={style.interest}>{group.Common_Interests.interests.join(', ')}</p>
                                     <p>{group.Meeting_place}</p>
                                 </div>
                                 <div>
