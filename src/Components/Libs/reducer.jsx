@@ -4,13 +4,13 @@ export const initialState = {
   };
 
   const reducer = (state, action) => {
-    let index;
+    // let index;
   
-    if (action.oggetto) {
-      index = state.events.findIndex(
-        (oggetto) => oggetto.id === action.oggetto.id
-      );
-    }
+    // if (action.oggetto) {
+    //   index = state.events.findIndex(
+    //     (oggetto) => oggetto.id === action.oggetto.id
+    //   );
+    // }
   
     switch (action.type) {
       case "SET_USER":

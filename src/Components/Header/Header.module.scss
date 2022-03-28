@@ -4,14 +4,19 @@
 
 .Head{
     display: flex;
-    background: gray;
+    background: rgb(29, 165, 81);
     width: 100vw;
     height: 100px;
     text-align: center;
     line-height: 100px;
     justify-content: space-between;
 
-.Logo,
+    .Logo{
+        position: relative;
+        top: -177px;
+    }
+
+
 .Login_settings{
     a, a:hover, a:focus, a:active {
         text-decoration: none;

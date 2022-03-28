@@ -26,7 +26,7 @@ const Header = () => {
             </div>
             <div className={style.Logo}>
             <Link to={'/'}>
-                <h1>FriGroup</h1>
+                <img src="https://firebasestorage.googleapis.com/v0/b/frigroup-social.appspot.com/o/FriGroup_Logo.png?alt=media&token=952da99e-e915-441a-b83d-9ab7bd2f1400" alt="FriGroup" loading="lazy" />
             </Link>
             </div>
             <div className={style.Login_settings}>
