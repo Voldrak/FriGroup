@@ -2,6 +2,7 @@ import Layout from "../Layout";
 import {useParams} from "react-router-dom";
 import {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import { useStateValue } from "./../Libs/StateProvider";
 import { collection, getDocs } from "firebase/firestore";
 import {db} from "./../../firebase.js";
 import style from "./Pages.module.scss";
@@ -9,10 +10,9 @@ import style from "./Pages.module.scss";
 const GroupDescription = () => {
 
     let navigate = useNavigate();
+    const [{ user }, dispatch] = useStateValue();
     let {id} = useParams();
     const [group, setGroup] = useState([]);
-
-    const handleJoin = () => navigate("/calendary");
 
     useEffect( () => {
         const getData = async () => {
@@ -31,6 +31,24 @@ const GroupDescription = () => {
         getData()
     },[id]);
 
+    const handleJoin = () => {
+        if (user){
+            dispatch({
+                type: "ADD_EVENT",
+                oggetto: {
+                    id: group.id,
+                    title: group.Group_Name,
+                    place: group.Meeting_place,
+                    time: group.Time,
+                    date: group.Date,
+                    location: group.Location,
+                }
+            })
+        navigate("/calendary");
+        } else {
+            navigate("/login")
+        }
+    }
 
     return(
         <Layout>
@@ -45,7 +63,7 @@ const GroupDescription = () => {
                                 <p className={style.P_GroupDesc}>Search in the range {group.Range} km from {group.Location}.</p>
                             </div>
                         </div>
-                        <input className={style.JoinGroup} type="button" onClick={handleJoin} value="Join" />
+                        <button className={style.JoinGroup} type="button" onClick={handleJoin}>Join</button>
                     </div>
                 </form>
         </Layout>

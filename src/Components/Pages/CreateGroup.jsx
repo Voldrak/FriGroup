@@ -2,6 +2,7 @@ import { useState} from "react";
 import checkboxs from "./../Libs/Checkbox.json";
 import radios from "./../Libs/Radio.json";
 import Layout from "../Layout";
+import { useStateValue } from "./../Libs/StateProvider";
 import {db} from "./../../firebase.js";
 import {collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +11,10 @@ import "./../Libs/Check.module.scss";
 
 
 const CreateGroup = () => {
+
+    const [{ user }] = useStateValue();
+
+
     const handleValueRange = event => setStateValueRange(event.target.value);
     const [interestsCom] = useState(checkboxs);
     const [meetingPlace] = useState(radios);
@@ -39,6 +44,9 @@ const CreateGroup = () => {
     }
 
     const handleSubmit = (event) => {
+        if (!user){navigate("/login")
+        } else {
+            
         event.preventDefault();
         const newGroup = {
           Group_Name: nameValue,
@@ -56,6 +64,7 @@ const CreateGroup = () => {
         setNameValue("");
         navigate('/');
     }
+}
 
 
 return(

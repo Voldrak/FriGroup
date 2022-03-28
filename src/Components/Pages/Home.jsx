@@ -1,10 +1,13 @@
 import Layout from './../Layout';
-import style from './Pages.module.scss';
 import { Link } from "react-router-dom";
-import Calendary from './Calendary';
+import { useStateValue } from "./../Libs/StateProvider";
+import style from './Pages.module.scss';
 
 
 const Home = () => {
+
+    const [{ user }] = useStateValue();
+
     return(
             <Layout>
             <main className={style.bodyHome}>
@@ -15,7 +18,7 @@ const Home = () => {
                     </div>
                 </Link>
 
-                <Link to={'/find_group'}> 
+                <Link to={user ? '/find_group'  : "/login"}> 
                     <div id={style.findGroup} className={style.select_Home}>
                         <h2>Find Group</h2>
                     </div>

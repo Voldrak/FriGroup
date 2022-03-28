@@ -1,65 +1,57 @@
-import format from "date-fns/format";
-import getDay from "date-fns/getDay";
-import parse from "date-fns/parse";
-import startOfWeek from "date-fns/startOfWeek";
-import React, { useState } from "react";
-import { Calendar, dateFnsLocalizer } from "react-big-calendar";
+
+// import React, { useState } from "react";
+import { Calendar, momentLocalizer  } from "react-big-calendar";
+import moment from 'moment'
+import { useStateValue } from "./../Libs/StateProvider";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Layout from "./../Layout/index";
+import style from "./Pages.module.scss"
 
-const locales = {
-    "en-US": require("date-fns/locale/en-US"),
-};
-const localizer = dateFnsLocalizer({
-    format,
-    parse,
-    startOfWeek,
-    getDay,
-    locales,
-});
-
-const events = [
-    {
-        title: "Big Meeting",
-        allDay: true,
-        start: new Date(2022, 7, 4),
-        end: new Date(2022, 6, 4),
-    },
-    {
-        title: "Vacation",
-        start: new Date(2021, 6, 7),
-        end: new Date(2021, 6, 10),
-    },
-    {
-        title: "Conference",
-        start: new Date(2021, 6, 20),
-        end: new Date(2021, 6, 23),
-    },
-];
 
 const Calendary = () => {
-    const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
-    const [allEvents, setAllEvents] = useState(events);
 
-    function handleAddEvent() {
-        setAllEvents([...allEvents, newEvent]);
-    }
+    const localizer = momentLocalizer(moment)
+    const [{ events }] = useStateValue();
+
+    // const [eventsList, setEventsList] = useState([]);
+
+   console.log(events);
 
     return (
-        <div className="Cale">
-            <h1>Calendar</h1>
-            <h2>Add New Event</h2>
-            <div>
-                <input type="text" placeholder="Add Title" style={{ width: "20%", marginRight: "10px" }} value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
-                <DatePicker placeholderText="Start Date" style={{ marginRight: "10px" }} selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
-                <DatePicker placeholderText="End Date" selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })} />
-                <button stlye={{ marginTop: "10px" }} onClick={handleAddEvent}>
-                    Add Event
-                </button>
+        <Layout>
+            <div className="Cale">
+                <h1>Calendar</h1>
+                {/* <h2>Add New Event</h2> */}
+                {/* <div> */}
+                    <aside className={style.eventList}>
+                        {events?.map((item) =>(
+                            <div key={item.id}>
+                                <p>{item.title}</p>
+                                <p>{item.place}</p>
+                                <p>{item.time}</p>
+                                <p>{item.date}</p>
+                                <p>{item.location}</p>
+
+                            </div>
+                        )
+                        )}
+                    </aside>
+
+                {/* </div> */}
+                <Calendar
+                    selectable
+                    defaultView="week"
+                    defaultDate={new Date()}
+                    localizer={localizer}
+                    events={events}
+                    startAccessor="start"
+                    endAccessor="end"
+                    style={{ height: 500 }}
+                    />
+
             </div>
-            <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
-        </div>
+        </Layout>
     );
 }
 

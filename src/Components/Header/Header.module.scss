@@ -9,9 +9,10 @@
     height: 100px;
     text-align: center;
     line-height: 100px;
-    justify-content: center;
+    justify-content: space-between;
 
-.Logo{
+.Logo,
+.Login_settings{
     a, a:hover, a:focus, a:active {
         text-decoration: none;
         color: inherit;
@@ -19,12 +20,7 @@
 }
     
     .Login_settings{
-        position: absolute;
-        right: 1vw;
-        margin-top: 5px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+        
         width: 100px;
     }
     

@@ -381,3 +381,12 @@
         }
     }
 }
+
+/////// CALENDARY /////////
+
+.eventList{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    gap: 3vw;
+}
